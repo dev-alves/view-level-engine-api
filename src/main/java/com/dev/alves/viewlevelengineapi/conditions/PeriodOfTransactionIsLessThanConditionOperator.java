@@ -17,12 +17,12 @@ public class PeriodOfTransactionIsLessThanConditionOperator implements Condition
 
     @Override
     public boolean test(DecisionContext context, Map<String, Object> args) {
-        var object = args.get("txDaysTransaction");
+        var object = args.get("paramDaysTransaction");
         var value = (int) object;
         var lastTransaction = LocalDate.now().minusDays(10);
         var today = LocalDate.now();
         var differenceBetweenTodayAndLastTransaction = ChronoUnit.DAYS.between(lastTransaction, today);
-        return differenceBetweenTodayAndLastTransaction < value;
+        return differenceBetweenTodayAndLastTransaction <= value;
     }
 
 }
