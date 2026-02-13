@@ -46,8 +46,7 @@ public class RuleEngineService {
 
             if (node == null) throw new IllegalArgumentException();
         }
-
-
+        
         return ViewLevelEnum.valueOf(node.getSet());
     }
 

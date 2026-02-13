@@ -1,11 +1,11 @@
 package com.dev.alves.viewlevelengineapi.models;
 
 import com.dev.alves.viewlevelengineapi.enums.StatusEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,4 +17,6 @@ public class Rule {
     private Long id;
     private StatusEnum status;
 
+    @ElementCollection
+    private List<Node> nodes;
 }
