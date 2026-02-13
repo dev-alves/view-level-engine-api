@@ -1,26 +1,20 @@
 package com.dev.alves.viewlevelengineapi.context;
 
 import com.dev.alves.viewlevelengineapi.dto.CustomerDTO;
+import com.dev.alves.viewlevelengineapi.dto.NodeDTO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
+import java.util.Map;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class DecisionContext {
-    CustomerDTO customerDTO;
-    List<String> permissions;
 
-    public CustomerDTO getCustomerDTO() {
-        return customerDTO;
-    }
+    private CustomerDTO customerDTO;
+    private List<String> permissions;
 
-    public void setCustomerDTO(CustomerDTO customerDTO) {
-        this.customerDTO = customerDTO;
-    }
-
-    public List<String> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<String> permissions) {
-        this.permissions = permissions;
-    }
 }

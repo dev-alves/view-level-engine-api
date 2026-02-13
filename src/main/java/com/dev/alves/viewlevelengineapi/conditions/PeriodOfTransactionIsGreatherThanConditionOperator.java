@@ -1,7 +1,6 @@
 package com.dev.alves.viewlevelengineapi.conditions;
 
 import com.dev.alves.viewlevelengineapi.context.DecisionContext;
-import org.jeasy.rules.api.Facts;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -17,8 +16,8 @@ public class PeriodOfTransactionIsGreatherThanConditionOperator implements Condi
     }
 
     @Override
-    public boolean test(DecisionContext context, Facts facts, Map<String, Object> args) {
-        var object = args.get("txDaysTransaction");
+    public boolean test(DecisionContext context, Map<String, Object> args) {
+        var object = args.get("paramDaysTransaction");
         var value = (int) object;
         var lastTransaction = LocalDate.now().minusDays(10);
         var today = LocalDate.now();

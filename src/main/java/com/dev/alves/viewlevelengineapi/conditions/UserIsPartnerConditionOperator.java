@@ -1,7 +1,6 @@
 package com.dev.alves.viewlevelengineapi.conditions;
 
 import com.dev.alves.viewlevelengineapi.context.DecisionContext;
-import org.jeasy.rules.api.Facts;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -15,7 +14,7 @@ public class UserIsPartnerConditionOperator implements ConditionOperator {
     }
 
     @Override
-    public boolean test(DecisionContext context, Facts facts, Map<String, Object> args) {
-        return context.getCustomerDTO().isPartner();
+    public boolean test(DecisionContext context, Map<String, Object> args) {
+        return context.getPermissions().contains("PERM_PARTNER");
     }
 }
