@@ -110,4 +110,3 @@ Content-Type: application/json
 ## Observações
 - O contexto atual é parcialmente mockado em `CreateRuleAction`: permissões e cliente não são obtidos de token/integração ainda.
 - O grafo de nós é salvo em MongoDB com `status = PUBLISHED` a cada execução.
-- `startNode` deve existir em `nodes`, caso contrário ocorre erro de execução.
