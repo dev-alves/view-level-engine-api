@@ -25,7 +25,7 @@ public class GetViewLevelCustomerAction {
         // Obter do token
         var permissions = List.of(
                 "PERM_ADMIN",
-                "PERM_OPERATOR"
+                ""
         );
 
         // Obter via integração
@@ -35,7 +35,7 @@ public class GetViewLevelCustomerAction {
         response.setViewLevel(ruleEngineService.getViewLevel(DecisionContext.builder()
                 .startNode(rule.getStartNode())
                 .nodes(rule.getNodes())
-                .customerDTO(customer)
+                .customer(customer)
                 .permissions(permissions)
                 .build())
         );

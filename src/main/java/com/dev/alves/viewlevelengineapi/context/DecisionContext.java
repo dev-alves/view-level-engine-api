@@ -19,7 +19,7 @@ public class DecisionContext {
     private int version;
     private String startNode;
     private Map<String, Node> nodes;
-    private CustomerDTO customerDTO;
+    private CustomerDTO customer;
     private List<String> permissions;
 
 }
