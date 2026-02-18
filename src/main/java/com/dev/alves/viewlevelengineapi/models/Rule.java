@@ -18,6 +18,8 @@ public class Rule {
     @UUID
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+
+    private String startNode;
     private StatusEnum status;
     private Map<String, Node> nodes;
 

@@ -1,7 +1,7 @@
 package com.dev.alves.viewlevelengineapi.context;
 
 import com.dev.alves.viewlevelengineapi.dto.CustomerDTO;
-import com.dev.alves.viewlevelengineapi.dto.NodeDTO;
+import com.dev.alves.viewlevelengineapi.models.Node;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +18,7 @@ public class DecisionContext {
 
     private int version;
     private String startNode;
-    private Map<String, NodeDTO> nodes;
+    private Map<String, Node> nodes;
     private CustomerDTO customerDTO;
     private List<String> permissions;
 

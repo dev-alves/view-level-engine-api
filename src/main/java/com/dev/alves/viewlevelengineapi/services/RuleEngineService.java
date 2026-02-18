@@ -1,11 +1,9 @@
 package com.dev.alves.viewlevelengineapi.services;
 
 import com.dev.alves.viewlevelengineapi.context.DecisionContext;
-import com.dev.alves.viewlevelengineapi.dto.NodeDTO;
 import com.dev.alves.viewlevelengineapi.enums.NodeTypeEnum;
 import com.dev.alves.viewlevelengineapi.enums.StatusEnum;
 import com.dev.alves.viewlevelengineapi.enums.ViewLevelEnum;
-import com.dev.alves.viewlevelengineapi.models.Node;
 import com.dev.alves.viewlevelengineapi.models.Rule;
 import com.dev.alves.viewlevelengineapi.registries.ConditionOperationRegistry;
 import com.dev.alves.viewlevelengineapi.repositories.RuleRepository;
@@ -26,12 +24,16 @@ public class RuleEngineService {
         this.ruleRepository = ruleRepository;
     }
 
+    public Rule findRuleByStatus(StatusEnum status) {
+        return ruleRepository.findByStatus(status);
+    }
+
     public void save(DecisionContext decisionContext) {
         var newRule = new Rule();
         newRule.setNodes(decisionContext.getNodes().entrySet()
                 .stream()
                 .collect(Collectors.toMap(
-                        Map.Entry::getKey, e -> toEntityNode(e.getValue())
+                        Map.Entry::getKey, Map.Entry::getValue
                 )));
 
         newRule.setStatus(StatusEnum.PUBLISHED);
@@ -55,18 +57,6 @@ public class RuleEngineService {
         }
 
         return ViewLevelEnum.valueOf(node.getSet());
-    }
-
-    private Node toEntityNode(NodeDTO value) {
-        var node = new Node();
-        node.setSet(value.getSet());
-        node.setOnTrue(value.getOnTrue());
-        node.setOnFalse(value.getOnFalse());
-        node.setOperation(value.getOperation());
-        node.setNext(value.getNext());
-        node.setType(value.getType());
-        node.setArguments(value.getArguments());
-        return node;
     }
 
 }
