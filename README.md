@@ -57,13 +57,13 @@ Executa o motor de regras e retorna o `viewLevel`.
 - `next`: campo não utilizado atualmente
 
 **View levels disponíveis**
-`COMPLETE`, `RESTRICTED`, `PARTNER`, `BLOCKED`, `MASKED`
+`COMPLETE`, `BLOCKED`, `MASKED`
 
 **Resposta**
 
 ```
 {
-  "viewLevel": "PARTNER"
+  "viewLevel": "BLOCKED"
 }
 ```
 
@@ -79,14 +79,14 @@ Content-Type: application/json
   "nodes": {
     "n1": {
       "type": "CONDITION",
-      "operation": "IsPartnerConditionOperator",
+      "operation": "UserIsOperatorConditionOperator",
       "arguments": {},
       "onTrue": "n2",
       "onFalse": "n3"
     },
     "n2": {
       "type": "ACTION",
-      "set": "PARTNER"
+      "set": "BLOCKED"
     },
     "n3": {
       "type": "ACTION",
@@ -97,8 +97,7 @@ Content-Type: application/json
 ```
 
 ## Operadores de condição disponíveis
-- `IsPartnerConditionOperator`: retorna `true` se o contexto contém a permissão `PERM_PARTNER`.
-- `UserIsPartnerConditionOperator`: retorna `true` se o contexto contém a permissão `PERM_PARTNER`.
+- `UserIsOperatorConditionOperator`: retorna `true` se o contexto contém a permissão `IS_OPERATOR`.
 - `PeriodOfTransactionIsLessThanConditionOperator`: compara dias desde a última transação (mockada como `hoje - 10 dias`) com `paramDaysTransaction`.
 - `PeriodOfTransactionIsGreatherThanConditionOperator`: compara dias desde a última transação (mockada como `hoje - 30 dias`) com `paramDaysTransaction`.
 
