@@ -9,7 +9,6 @@ import com.dev.alves.viewlevelengineapi.models.Node;
 import com.dev.alves.viewlevelengineapi.models.Rule;
 import com.dev.alves.viewlevelengineapi.registries.ConditionOperationRegistry;
 import com.dev.alves.viewlevelengineapi.repositories.RuleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -19,13 +18,15 @@ import java.util.stream.Collectors;
 @Component
 public class RuleEngineService {
 
-    @Autowired
-    private ConditionOperationRegistry conditionOperationRegistry;
+    private final ConditionOperationRegistry conditionOperationRegistry;
+    private final RuleRepository ruleRepository;
 
-    @Autowired
-    private RuleRepository ruleRepository;
+    public RuleEngineService(ConditionOperationRegistry conditionOperationRegistry, RuleRepository ruleRepository) {
+        this.conditionOperationRegistry = conditionOperationRegistry;
+        this.ruleRepository = ruleRepository;
+    }
 
-    public ViewLevelEnum execute(DecisionContext decisionContext) {
+    public void save(DecisionContext decisionContext) {
         var newRule = new Rule();
         newRule.setNodes(decisionContext.getNodes().entrySet()
                 .stream()
@@ -34,7 +35,10 @@ public class RuleEngineService {
                 )));
 
         newRule.setStatus(StatusEnum.PUBLISHED);
+        ruleRepository.save(newRule);
+    }
 
+    public ViewLevelEnum getViewLevel(DecisionContext decisionContext) {
         var currentNodeId = decisionContext.getStartNode();
         var node = decisionContext.getNodes().get(currentNodeId);
 
@@ -50,7 +54,6 @@ public class RuleEngineService {
             if (node == null) throw new IllegalArgumentException();
         }
 
-        ruleRepository.save(newRule);
         return ViewLevelEnum.valueOf(node.getSet());
     }
 
