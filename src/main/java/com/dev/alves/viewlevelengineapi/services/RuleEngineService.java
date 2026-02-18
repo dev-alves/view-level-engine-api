@@ -34,7 +34,8 @@ public class RuleEngineService {
                 .stream()
                 .collect(Collectors.toMap(
                         Map.Entry::getKey, Map.Entry::getValue
-                )));
+                ))
+        );
 
         newRule.setStatus(StatusEnum.PUBLISHED);
         ruleRepository.save(newRule);

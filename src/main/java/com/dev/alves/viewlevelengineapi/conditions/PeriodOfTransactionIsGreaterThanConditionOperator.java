@@ -8,7 +8,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Map;
 
 @Component
-public class PeriodOfTransactionIsGreatherThanConditionOperator implements ConditionOperator {
+public class PeriodOfTransactionIsGreaterThanConditionOperator implements ConditionOperator {
 
     @Override
     public String operation() {
