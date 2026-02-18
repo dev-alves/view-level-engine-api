@@ -15,6 +15,6 @@ public class UserIsOperatorConditionOperator implements ConditionOperator {
 
     @Override
     public boolean test(DecisionContext context, Map<String, Object> args) {
-        return context.getPermissions().contains("IS_OPERATOR");
+        return context.getPermissions().contains("PERM_OPERATOR");
     }
 }

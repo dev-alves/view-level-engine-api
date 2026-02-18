@@ -97,7 +97,7 @@ Content-Type: application/json
 ```
 
 ## Operadores de condição disponíveis
-- `UserIsOperatorConditionOperator`: retorna `true` se o contexto contém a permissão `IS_OPERATOR`.
+- `UserIsOperatorConditionOperator`: retorna `true` se o contexto contém a permissão `PERM_OPERATOR`.
 - `PeriodOfTransactionIsLessThanConditionOperator`: compara dias desde a última transação (mockada como `hoje - 10 dias`) com `paramDaysTransaction`.
 - `PeriodOfTransactionIsGreatherThanConditionOperator`: compara dias desde a última transação (mockada como `hoje - 30 dias`) com `paramDaysTransaction`.
 

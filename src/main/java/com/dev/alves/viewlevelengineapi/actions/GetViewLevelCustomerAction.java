@@ -25,7 +25,7 @@ public class GetViewLevelCustomerAction {
         // Obter do token
         var permissions = List.of(
                 "PERM_ADMIN",
-                "PERM_PARTNER"
+                "PERM_OPERATOR"
         );
 
         // Obter via integração
