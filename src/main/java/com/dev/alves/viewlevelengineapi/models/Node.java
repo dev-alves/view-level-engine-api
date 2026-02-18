@@ -1,11 +1,13 @@
 package com.dev.alves.viewlevelengineapi.models;
 
 import com.dev.alves.viewlevelengineapi.enums.NodeTypeEnum;
-import jakarta.persistence.Embeddable;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Map;
 
-@Embeddable
+@Getter
+@Setter
 public class Node {
 
     private NodeTypeEnum type;

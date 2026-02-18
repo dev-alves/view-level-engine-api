@@ -13,4 +13,5 @@ public class CreateRuleRequest {
     private int version;
     private String startNode;
     private Map<String, NodeDTO> nodes;
+
 }

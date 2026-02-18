@@ -1,22 +1,24 @@
 package com.dev.alves.viewlevelengineapi.models;
 
 import com.dev.alves.viewlevelengineapi.enums.StatusEnum;
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UUID;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "rule")
+@Document
 public class Rule {
 
-    @Id
-    private Long id;
+    @UUID
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     private StatusEnum status;
+    private Map<String, Node> nodes;
 
-    @ElementCollection
-    private List<Node> nodes;
 }
