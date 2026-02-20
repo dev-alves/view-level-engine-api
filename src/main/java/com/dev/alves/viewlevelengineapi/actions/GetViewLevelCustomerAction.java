@@ -3,7 +3,7 @@ package com.dev.alves.viewlevelengineapi.actions;
 import com.dev.alves.viewlevelengineapi.context.DecisionContext;
 import com.dev.alves.viewlevelengineapi.dto.CustomerDTO;
 import com.dev.alves.viewlevelengineapi.enums.StatusEnum;
-import com.dev.alves.viewlevelengineapi.responses.ViewLevelResponse;
+import com.dev.alves.viewlevelengineapi.dto.ViewLevelDTO;
 import com.dev.alves.viewlevelengineapi.services.RuleEngineService;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +18,8 @@ public class GetViewLevelCustomerAction {
         this.ruleEngineService = ruleEngineService;
     }
 
-    public ViewLevelResponse execute(Long id) {
-        var response = new ViewLevelResponse();
+    public ViewLevelDTO execute(Long id) {
+        var response = new ViewLevelDTO();
         var rule = ruleEngineService.findRuleByStatus(StatusEnum.PUBLISHED);
 
         // Obter do token

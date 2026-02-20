@@ -1,6 +1,7 @@
 package com.dev.alves.viewlevelengineapi.conditions;
 
 import com.dev.alves.viewlevelengineapi.context.DecisionContext;
+import com.dev.alves.viewlevelengineapi.enums.ConditionOperatorEnum;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -9,8 +10,8 @@ import java.util.Map;
 public class UserIsOperatorConditionOperator implements ConditionOperator {
 
     @Override
-    public String operation() {
-        return "UserIsOperatorConditionOperator";
+    public ConditionOperatorEnum operation() {
+        return ConditionOperatorEnum.USER_IS_OPERATOR;
     }
 
     @Override

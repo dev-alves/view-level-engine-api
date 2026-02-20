@@ -1,6 +1,7 @@
 package com.dev.alves.viewlevelengineapi.conditions;
 
 import com.dev.alves.viewlevelengineapi.context.DecisionContext;
+import com.dev.alves.viewlevelengineapi.enums.ConditionOperatorEnum;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -11,8 +12,8 @@ import java.util.Map;
 public class PeriodOfTransactionIsLessThanConditionOperator implements ConditionOperator {
 
     @Override
-    public String operation() {
-        return "PeriodOfTransactionIsLessThanConditionOperator";
+    public ConditionOperatorEnum operation() {
+        return ConditionOperatorEnum.PERIOD_OF_TRANSACTION_IS_LESS_THAN;
     }
 
     @Override

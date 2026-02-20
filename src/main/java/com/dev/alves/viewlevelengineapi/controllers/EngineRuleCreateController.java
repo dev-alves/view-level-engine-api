@@ -1,7 +1,7 @@
 package com.dev.alves.viewlevelengineapi.controllers;
 
 import com.dev.alves.viewlevelengineapi.actions.CreateRuleAction;
-import com.dev.alves.viewlevelengineapi.requests.CreateRuleRequest;
+import com.dev.alves.viewlevelengineapi.dto.CreateRuleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +17,8 @@ public class EngineRuleCreateController {
     private CreateRuleAction action;
 
     @PostMapping("rule")
-    public ResponseEntity<?> createRule(@RequestBody CreateRuleRequest createRuleRequest) {
-        action.execute(createRuleRequest);
+    public ResponseEntity<?> createRule(@RequestBody CreateRuleDTO createRuleDTO) {
+        action.execute(createRuleDTO);
         return ResponseEntity.ok().build();
     }
 }

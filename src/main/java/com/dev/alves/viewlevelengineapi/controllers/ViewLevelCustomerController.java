@@ -1,7 +1,7 @@
 package com.dev.alves.viewlevelengineapi.controllers;
 
 import com.dev.alves.viewlevelengineapi.actions.GetViewLevelCustomerAction;
-import com.dev.alves.viewlevelengineapi.responses.ViewLevelResponse;
+import com.dev.alves.viewlevelengineapi.dto.ViewLevelDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +19,7 @@ public class ViewLevelCustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<ViewLevelResponse> getViewLevel(@PathVariable Long id) {
+    public ResponseEntity<ViewLevelDTO> getViewLevel(@PathVariable Long id) {
         return ResponseEntity.ok(getViewLevelCustomerAction.execute(id));
     }
 }
