@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/engine")
+@RequestMapping("/engine/rule")
 public class EngineRuleCreateController {
 
     @Autowired
     private CreateRuleAction action;
 
-    @PostMapping("rule")
+    @PostMapping
     public ResponseEntity<?> createRule(@RequestBody CreateRuleDTO createRuleDTO) {
         action.execute(createRuleDTO);
         return ResponseEntity.ok().build();
