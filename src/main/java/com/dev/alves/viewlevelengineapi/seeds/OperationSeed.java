@@ -26,14 +26,14 @@ public class OperationSeed implements CommandLineRunner {
 
         var operations = conditionOperators.stream()
             .map(operator -> {
-                return new Operation(NodeTypeEnum.CONDITION, operator.operation().name());
+                return new Operation(NodeTypeEnum.CONDITION, operator.operation().name(), operator.hasArgs());
             })
             .toList();
 
         if (!operations.isEmpty()) {
             operationRepository.saveAll(operations);
-            operationRepository.save(new Operation(NodeTypeEnum.ACTION, ViewLevelEnum.COMPLETE.name()));
-            operationRepository.save(new Operation(NodeTypeEnum.ACTION, ViewLevelEnum.MASKED.name()));
+            operationRepository.save(new Operation(NodeTypeEnum.ACTION, ViewLevelEnum.COMPLETE.name(), false));
+            operationRepository.save(new Operation(NodeTypeEnum.ACTION, ViewLevelEnum.MASKED.name(), false));
         }
     }
 }

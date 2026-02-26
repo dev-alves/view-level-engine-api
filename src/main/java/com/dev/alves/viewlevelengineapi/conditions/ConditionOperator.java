@@ -9,5 +9,6 @@ public interface ConditionOperator {
 
     ConditionOperatorEnum operation();
     boolean test(DecisionContext context, Map<String, Object> args);
+    boolean hasArgs();
 
 }

@@ -13,13 +13,17 @@ import java.util.List;
 @NoArgsConstructor
 public class RuleOperatorDTO {
 
+    private String id;
     private String name;
     private NodeTypeEnum type;
+    private boolean hasArgs;
 
     public static RuleOperatorDTO toDTO(Operation operation) {
         var dto = new RuleOperatorDTO();
+        dto.id = operation.getId();
         dto.name = operation.getName();
         dto.type = operation.getNodeType();
+        dto.hasArgs = operation.isArgs();
         return dto;
     }
 

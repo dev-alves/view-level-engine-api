@@ -26,4 +26,9 @@ public class PeriodOfTransactionIsLessThanConditionOperator implements Condition
         return differenceBetweenTodayAndLastTransaction <= value;
     }
 
+    @Override
+    public boolean hasArgs() {
+        return true;
+    }
+
 }

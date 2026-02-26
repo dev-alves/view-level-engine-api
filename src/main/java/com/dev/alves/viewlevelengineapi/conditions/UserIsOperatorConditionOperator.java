@@ -18,4 +18,10 @@ public class UserIsOperatorConditionOperator implements ConditionOperator {
     public boolean test(DecisionContext context, Map<String, Object> args) {
         return context.getPermissions().contains("PERM_OPERATOR");
     }
+
+    @Override
+    public boolean hasArgs() {
+        return false;
+    }
+
 }
