@@ -1,6 +1,5 @@
 package com.dev.alves.viewlevelengineapi.actions;
 
-import com.dev.alves.viewlevelengineapi.context.DecisionContext;
 import com.dev.alves.viewlevelengineapi.dto.CreateRuleDTO;
 import com.dev.alves.viewlevelengineapi.services.RuleEngineService;
 import org.springframework.stereotype.Component;
@@ -15,12 +14,9 @@ public class CreateRuleAction {
     }
 
     public void execute(CreateRuleDTO createRuleDTO) {
-        ruleEngineService.save(DecisionContext.builder()
-                .startNode(createRuleDTO.getStartNode())
-                .version(createRuleDTO.getVersion())
-                .nodes(createRuleDTO.toModel().getNodes())
-                .startNode(createRuleDTO.getStartNode())
-                .build());
+        var rule = createRuleDTO.toModel();
+        rule.setStartNode(createRuleDTO.getStartNode());
+        ruleEngineService.save(rule);
     }
 
 }

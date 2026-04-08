@@ -9,10 +9,7 @@ import com.dev.alves.viewlevelengineapi.registries.ConditionOperationRegistry;
 import com.dev.alves.viewlevelengineapi.repositories.RuleRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Component
 public class RuleEngineService {
@@ -29,17 +26,27 @@ public class RuleEngineService {
         return ruleRepository.findByStatus(status);
     }
 
-    public void save(DecisionContext decisionContext) {
-        var newRule = new Rule();
-        newRule.setNodes(decisionContext.getNodes().entrySet()
-                .stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey, Map.Entry::getValue
-                ))
-        );
-        newRule.setStartNode(decisionContext.getStartNode());
-        newRule.setStatus(StatusEnum.PUBLISHED);
+    public void save(Rule newRule) {
+        var newStatus = newRule.getStatus() != null ? newRule.getStatus() : StatusEnum.PUBLISHED;
+        newRule.setStatus(newStatus);
+
+        if (StatusEnum.PUBLISHED.equals(newStatus)) {
+            deactivatePublishedRules();
+        }
+
         ruleRepository.save(newRule);
+    }
+
+    private void deactivatePublishedRules() {
+        var publishedRules = ruleRepository.findAllByStatus(StatusEnum.PUBLISHED);
+
+        for (var publishedRule : publishedRules) {
+            publishedRule.setStatus(StatusEnum.DRAFT);
+        }
+
+        if (!publishedRules.isEmpty()) {
+            ruleRepository.saveAll(publishedRules);
+        }
     }
 
     public ViewLevelEnum getViewLevel(DecisionContext decisionContext) {
