@@ -37,7 +37,7 @@ public class RuleEngineService {
                         Map.Entry::getKey, Map.Entry::getValue
                 ))
         );
-
+        newRule.setStartNode(decisionContext.getStartNode());
         newRule.setStatus(StatusEnum.PUBLISHED);
         ruleRepository.save(newRule);
     }

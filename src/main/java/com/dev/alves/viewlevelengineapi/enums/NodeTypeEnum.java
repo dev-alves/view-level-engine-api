@@ -2,6 +2,6 @@ package com.dev.alves.viewlevelengineapi.enums;
 
 public enum NodeTypeEnum {
 
-    CONDITION, ACTION
+    CONDITION, CONDITION_WITH_ARGS, ACTION
 
 }

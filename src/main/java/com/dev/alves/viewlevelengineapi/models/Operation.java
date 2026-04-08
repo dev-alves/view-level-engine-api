@@ -21,9 +21,9 @@ public class Operation {
     private NodeTypeEnum nodeType;
     private boolean args;
 
-    public Operation(NodeTypeEnum nodeType, String name,  boolean hasArgs) {
+    public Operation(NodeTypeEnum nodeType, String name,  boolean args) {
         this.nodeType = nodeType;
         this.name = name;
-        this.args = hasArgs;
+        this.args = args;
     }
 }

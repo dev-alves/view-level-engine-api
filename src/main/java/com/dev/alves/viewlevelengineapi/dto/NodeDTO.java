@@ -2,11 +2,10 @@ package com.dev.alves.viewlevelengineapi.dto;
 
 import com.dev.alves.viewlevelengineapi.enums.ConditionOperatorEnum;
 import com.dev.alves.viewlevelengineapi.enums.NodeTypeEnum;
+import com.dev.alves.viewlevelengineapi.models.Argument;
 import com.dev.alves.viewlevelengineapi.models.Node;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Map;
 
 @Getter
 @Setter
@@ -14,7 +13,7 @@ public class NodeDTO {
 
     private NodeTypeEnum type;
     private ConditionOperatorEnum operation;
-    private Map<String, Object> arguments;
+    private Argument arguments;
     private String onTrue;
     private String onFalse;
     private String set;

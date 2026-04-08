@@ -26,7 +26,8 @@ public class OperationSeed implements CommandLineRunner {
 
         var operations = conditionOperators.stream()
             .map(operator -> {
-                return new Operation(NodeTypeEnum.CONDITION, operator.operation().name(), operator.hasArgs());
+                var nodeType = operator.hasArgs() ? NodeTypeEnum.CONDITION_WITH_ARGS :  NodeTypeEnum.CONDITION;
+                return new Operation(nodeType, operator.operation().name(), operator.hasArgs());
             })
             .toList();
 

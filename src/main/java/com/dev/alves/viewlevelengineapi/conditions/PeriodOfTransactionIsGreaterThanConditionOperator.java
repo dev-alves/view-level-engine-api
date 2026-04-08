@@ -2,11 +2,11 @@ package com.dev.alves.viewlevelengineapi.conditions;
 
 import com.dev.alves.viewlevelengineapi.context.DecisionContext;
 import com.dev.alves.viewlevelengineapi.enums.ConditionOperatorEnum;
+import com.dev.alves.viewlevelengineapi.models.Argument;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Map;
 
 @Component
 public class PeriodOfTransactionIsGreaterThanConditionOperator implements ConditionOperator {
@@ -17,9 +17,9 @@ public class PeriodOfTransactionIsGreaterThanConditionOperator implements Condit
     }
 
     @Override
-    public boolean test(DecisionContext context, Map<String, Object> args) {
-        var object = args.get("paramDaysTransaction");
-        var value = (int) object;
+    public boolean test(DecisionContext context, Argument args) {
+        var object = args != null ? args.getValue() : null;
+        var value = ((Number) object).intValue();
         var lastTransaction = LocalDate.now().minusDays(30);
         var today = LocalDate.now();
         var differenceBetweenTodayAndLastTransaction = ChronoUnit.DAYS.between(lastTransaction, today);
