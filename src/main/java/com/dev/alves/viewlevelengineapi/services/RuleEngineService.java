@@ -37,18 +37,6 @@ public class RuleEngineService {
         ruleRepository.save(newRule);
     }
 
-    private void deactivatePublishedRules() {
-        var publishedRules = ruleRepository.findAllByStatus(StatusEnum.PUBLISHED);
-
-        for (var publishedRule : publishedRules) {
-            publishedRule.setStatus(StatusEnum.DRAFT);
-        }
-
-        if (!publishedRules.isEmpty()) {
-            ruleRepository.saveAll(publishedRules);
-        }
-    }
-
     public ViewLevelEnum getViewLevel(DecisionContext decisionContext) {
         var currentNodeId = decisionContext.getStartNode();
         var node = decisionContext.getNodes().get(currentNodeId);
@@ -66,6 +54,18 @@ public class RuleEngineService {
         }
 
         return ViewLevelEnum.valueOf(node.getSet());
+    }
+
+    private void deactivatePublishedRules() {
+        var publishedRules = ruleRepository.findAllByStatus(StatusEnum.PUBLISHED);
+
+        for (var publishedRule : publishedRules) {
+            publishedRule.setStatus(StatusEnum.DRAFT);
+        }
+
+        if (!publishedRules.isEmpty()) {
+            ruleRepository.saveAll(publishedRules);
+        }
     }
 
 }
