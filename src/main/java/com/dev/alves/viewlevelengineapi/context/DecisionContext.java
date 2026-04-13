@@ -16,7 +16,6 @@ import java.util.Map;
 @Builder
 public class DecisionContext {
 
-    private int version;
     private String startNode;
     private Map<String, Node> nodes;
     private CustomerDTO customer;

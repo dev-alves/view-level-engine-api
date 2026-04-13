@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 @Setter
 public class CreateRuleDTO {
 
-    private int version;
     private String startNode;
     private StatusEnum statusEnum;
     private Map<String, NodeDTO> nodes;

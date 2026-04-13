@@ -43,7 +43,6 @@ Executa o motor de regras e retorna o `viewLevel`.
 
 **Request body**
 
-- `version` (int)
 - `startNode` (string)
 - `nodes` (mapa de nós, chaveada por id)
 
@@ -74,7 +73,6 @@ POST /engine/rule
 Content-Type: application/json
 
 {
-  "version": 1,
   "startNode": "n1",
   "nodes": {
     "n1": {
