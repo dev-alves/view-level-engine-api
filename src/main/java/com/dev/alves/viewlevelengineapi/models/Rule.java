@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.UUID;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -22,5 +23,7 @@ public class Rule {
     private String startNode;
     private StatusEnum status;
     private Map<String, Node> nodes;
+    private Map<String, NodePosition> positions;
+    private List<RuleEdge> edges;
 
 }
