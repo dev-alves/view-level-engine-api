@@ -73,20 +73,20 @@ POST /engine/rule
 Content-Type: application/json
 
 {
-  "startNode": "n1",
+  "startNode": "node1",
   "nodes": {
-    "n1": {
+    "node1": {
       "type": "CONDITION",
       "operation": "UserIsOperatorConditionOperator",
       "arguments": {},
-      "onTrue": "n2",
-      "onFalse": "n3"
+      "onTrue": "node2",
+      "onFalse": "node3"
     },
-    "n2": {
+    "node2": {
       "type": "ACTION",
       "set": "BLOCKED"
     },
-    "n3": {
+    "node3": {
       "type": "ACTION",
       "set": "RESTRICTED"
     }
@@ -96,13 +96,13 @@ Content-Type: application/json
 
 ## Operadores de condição disponíveis
 - `UserIsOperatorConditionOperator`: retorna `true` se o contexto contém a permissão `PERM_OPERATOR`.
-- `PeriodOfTransactionIsLessThanConditionOperator`: compara dias desde a última transação (mockada como `hoje - 10 dias`) com `paramDaysTransaction`.
-- `PeriodOfTransactionIsGreaterThanConditionOperator`: compara dias desde a última transação (mockada como `hoje - 30 dias`) com `paramDaysTransaction`.
+- `PeriodOfTransactionIsLessThanConditionOperator`: compara dias desde a última transação (mockada como `hoje - 10 dias`) com `"arguments": {"value":  <<valor>>}`.
+- `PeriodOfTransactionIsGreaterThanConditionOperator`: compara dias desde a última transação (mockada como `hoje - 30 dias`) com `"arguments": {"value":  <<valor>>}`.
 
-`paramDaysTransaction` deve ser um inteiro dentro de `arguments`, por exemplo:
+`value` deve ser um inteiro dentro de `arguments`, por exemplo:
 
 ```
-"arguments": { "paramDaysTransaction": 15 }
+"arguments": { "value": 15 }
 ```
 
 ## Observações
