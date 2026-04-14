@@ -1,12 +1,14 @@
 package com.dev.alves.viewlevelengineapi.services;
 
 import com.dev.alves.viewlevelengineapi.context.DecisionContext;
+import com.dev.alves.viewlevelengineapi.dto.UpdateRuleDTO;
 import com.dev.alves.viewlevelengineapi.enums.NodeTypeEnum;
 import com.dev.alves.viewlevelengineapi.enums.StatusEnum;
 import com.dev.alves.viewlevelengineapi.enums.ViewLevelEnum;
 import com.dev.alves.viewlevelengineapi.models.Rule;
 import com.dev.alves.viewlevelengineapi.registries.ConditionOperationRegistry;
 import com.dev.alves.viewlevelengineapi.repositories.RuleRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
@@ -54,6 +56,10 @@ public class RuleEngineService {
         }
 
         return ViewLevelEnum.valueOf(node.getSet());
+    }
+
+    public void updateRules(String id, UpdateRuleDTO updateRuleDTO) {
+        var rule = ruleRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     private void deactivatePublishedRules() {

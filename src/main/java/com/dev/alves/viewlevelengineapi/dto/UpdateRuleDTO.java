@@ -1,4 +1,4 @@
 package com.dev.alves.viewlevelengineapi.dto;
 
-public class CreateRuleDTO extends TreeDTO {
+public class UpdateRuleDTO extends TreeDTO {
 }

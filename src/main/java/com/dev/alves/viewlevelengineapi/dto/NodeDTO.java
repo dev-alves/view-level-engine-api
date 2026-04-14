@@ -4,6 +4,7 @@ import com.dev.alves.viewlevelengineapi.enums.ConditionOperatorEnum;
 import com.dev.alves.viewlevelengineapi.enums.NodeTypeEnum;
 import com.dev.alves.viewlevelengineapi.models.Argument;
 import com.dev.alves.viewlevelengineapi.models.Node;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +12,12 @@ import lombok.Setter;
 @Setter
 public class NodeDTO {
 
+    @NotNull
     private NodeTypeEnum type;
+
+    @NotNull
     private ConditionOperatorEnum operation;
+
     private Argument arguments;
     private String onTrue;
     private String onFalse;

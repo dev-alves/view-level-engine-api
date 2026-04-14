@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface RuleRepository extends MongoRepository<Rule, Long> {
+public interface RuleRepository extends MongoRepository<Rule, String> {
 
     Rule findByStatus(StatusEnum statusEnum);
     List<Rule> findAllByStatus(StatusEnum statusEnum);

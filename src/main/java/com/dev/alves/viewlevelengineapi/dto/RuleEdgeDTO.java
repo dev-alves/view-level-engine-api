@@ -1,6 +1,7 @@
 package com.dev.alves.viewlevelengineapi.dto;
 
 import com.dev.alves.viewlevelengineapi.models.RuleEdge;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,9 +10,15 @@ import lombok.Setter;
 public class RuleEdgeDTO {
 
     private String id;
+
+    @NotNull
     private String source;
+
+    @NotNull
     private String target;
-    private String sourceHandle;
+
+    @NotNull
+    private Boolean sourceHandle;
 
     public RuleEdge toModel() {
         var ruleEdge = new RuleEdge();

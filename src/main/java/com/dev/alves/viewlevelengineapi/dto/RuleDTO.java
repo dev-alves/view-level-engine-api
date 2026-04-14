@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @Setter
 public class RuleDTO {
 
+    private String id;
     private String startNode;
     private StatusEnum status;
     private Map<String, NodeDTO> nodes;
@@ -21,6 +22,7 @@ public class RuleDTO {
 
     public static RuleDTO toDTO(Rule model) {
         var ruleDTO = new RuleDTO();
+        ruleDTO.setId(model.getId());
         ruleDTO.startNode = model.getStartNode();
         ruleDTO.status = model.getStatus();
         ruleDTO.nodes = model.getNodes().entrySet().stream().collect(Collectors.toMap(
