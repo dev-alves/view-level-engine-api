@@ -15,8 +15,7 @@ public class NodeDTO {
     @NotNull
     private NodeTypeEnum type;
 
-    @NotNull
-    private ConditionOperatorEnum operation;
+     private ConditionOperatorEnum operation;
 
     private Argument arguments;
     private String onTrue;

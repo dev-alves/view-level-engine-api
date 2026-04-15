@@ -25,7 +25,7 @@ public class RuleEngineService {
     }
 
     public Rule findRuleByStatus(StatusEnum status) {
-        return ruleRepository.findByStatus(status);
+        return ruleRepository.findByStatus(status).orElseThrow(EntityNotFoundException::new);
     }
 
     public void save(Rule newRule) {
@@ -45,7 +45,8 @@ public class RuleEngineService {
 
         while(!NodeTypeEnum.ACTION.equals(node.getType())) {
             var type = node.getType();
-            if (Objects.requireNonNull(type) == NodeTypeEnum.CONDITION) {
+            if (Objects.requireNonNull(type) == NodeTypeEnum.CONDITION
+                    || type == NodeTypeEnum.CONDITION_WITH_ARGS) {
                 var operation = conditionOperationRegistry.get(node.getOperation());
                 var isTrue = operation.test(decisionContext, node.getArguments());
                 currentNodeId = isTrue ? node.getOnTrue() : node.getOnFalse();
@@ -60,6 +61,8 @@ public class RuleEngineService {
 
     public void updateRules(String id, UpdateRuleDTO updateRuleDTO) {
         var rule = ruleRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        updateRuleDTO.bindToModel(rule);
+        save(rule);
     }
 
     private void deactivatePublishedRules() {

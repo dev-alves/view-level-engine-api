@@ -34,6 +34,8 @@ public class OperationSeed implements CommandLineRunner {
         if (!operations.isEmpty()) {
             operationRepository.saveAll(operations);
             operationRepository.save(new Operation(NodeTypeEnum.ACTION, ViewLevelEnum.COMPLETE.name(), false));
+            operationRepository.save(new Operation(NodeTypeEnum.ACTION, ViewLevelEnum.RESTRICTED.name(), false));
+            operationRepository.save(new Operation(NodeTypeEnum.ACTION, ViewLevelEnum.BLOCKED.name(), false));
             operationRepository.save(new Operation(NodeTypeEnum.ACTION, ViewLevelEnum.MASKED.name(), false));
         }
     }

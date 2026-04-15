@@ -15,7 +15,6 @@ public class CreateRuleAction {
 
     public void execute(CreateRuleDTO createRuleDTO) {
         var rule = createRuleDTO.toModel();
-        rule.setStartNode(createRuleDTO.getStartNode());
         ruleEngineService.save(rule);
     }
 

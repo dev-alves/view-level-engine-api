@@ -4,6 +4,7 @@ import com.dev.alves.viewlevelengineapi.enums.StatusEnum;
 import com.dev.alves.viewlevelengineapi.models.Rule;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +19,7 @@ public class TreeDTO {
     @NotBlank
     private String startNode;
 
-    @NotBlank
+    @NotNull
     private StatusEnum statusEnum;
 
     @Valid
@@ -32,21 +33,22 @@ public class TreeDTO {
 
     public Rule toModel() {
         var rule = new Rule();
+        bindToModel(rule);
+        return rule;
+    }
+
+    public void bindToModel(Rule rule) {
+        rule.setStartNode(this.startNode);
         rule.setStatus(this.statusEnum);
         rule.setNodes(this.nodes.entrySet().stream().collect(Collectors.toMap(
-                Map.Entry::getKey, nodes -> nodes.getValue().toModel()))
+                Map.Entry::getKey, node -> node.getValue().toModel()))
         );
-        if (this.positions != null) {
-            rule.setPositions(this.positions.entrySet().stream().collect(Collectors.toMap(
-                    Map.Entry::getKey, position -> position.getValue().toModel()))
-            );
-        }
-        if (this.edges != null) {
-            rule.setEdges(this.edges.stream()
-                    .map(RuleEdgeDTO::toModel)
-                    .toList());
-        }
-        return rule;
+        rule.setPositions(this.positions == null ? null : this.positions.entrySet().stream().collect(Collectors.toMap(
+                Map.Entry::getKey, position -> position.getValue().toModel()))
+        );
+        rule.setEdges(this.edges == null ? null : this.edges.stream()
+                .map(RuleEdgeDTO::toModel)
+                .toList());
     }
 
 }
