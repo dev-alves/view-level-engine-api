@@ -3,7 +3,6 @@ package com.dev.alves.viewlevelengineapi.validators;
 import com.dev.alves.viewlevelengineapi.dto.NodeDTO;
 import com.dev.alves.viewlevelengineapi.dto.RuleEdgeDTO;
 import com.dev.alves.viewlevelengineapi.dto.TreeDTO;
-import com.dev.alves.viewlevelengineapi.enums.NodeTypeEnum;
 import jakarta.validation.ValidationException;
 import org.springframework.stereotype.Component;
 
